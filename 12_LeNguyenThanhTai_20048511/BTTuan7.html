@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" r>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            width: 500px;
+            height: 170px;
+            background-color: #ccc;
+            margin: 0 auto;
+        }
+    </style>
+    <script>
+        function trungbinh() {
+            var t = parseFloat(document.frm1.toan.value);
+            var l = parseFloat(document.frm1.li.value);
+            var trb = (t + l) / 2;
+            document.frm1.tb.value = trb;
+        }
+        function xeploai() {
+            var trb = document.frm1.tb.value;
+            if (trb < 5) {
+                document.frm1.xl.value = "Yếu"
+            }
+            else if (trb >= 5 && trb < 6.5) {
+                document.frm1.xl.value = "Trung bình"
+            }
+            else if (trb >= 6.5 && trb < 8) {
+                document.frm1.xl.value = "Khá"
+            }
+            else {
+                document.frm1.xl.value = "Giỏi"
+            }
+
+
+        }
+
+        function huy() {
+            document.frm1.toan.value = "";
+            document.frm1.li.value = "";
+            document.frm1.tb.value = "";
+            document.frm1.xl.value = "";
+        }
+
+        function songaythang(thang) {
+            var thang = parseInt.document.frm2.month.value;
+            var day = parseInt.document.frm2.songay.value;
+            switch (month) {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    return day = "31";
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    return day = "30";
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <!-- BÀI 2-->
+    <!-- Cấu trúc switch -->
+    <!-- Bài tập: khai báo và gán giá trị cho 1 biến thang
+        Xuất ra số ngày trong tháng
+        Tháng 2: “tháng 2 có 28 ngày -->
+    <!-- BAI3 -->
+    <!-- Cấu trúc lặp:
+        Viết hàm xuất ra bảng cửu chương với tham số là số nguyên chỉ bảng cưu chương mấy
+        ví dụ cuuchuong(5)--xuất ra bảng cửu chương  5 với dạng xuất 5x1 =5 -->
+
+
+
+    <div id="container">
+        <form action="" name="frm1">
+            <table border="1" width="100%">
+                <tr>
+                    <td colspan="2" align="center">Kết quả học tập</td>
+                </tr>
+
+                <tr>
+                    <td>Điểm toán</td>
+                    <td><input type="text" name="toan"></td>
+                </tr>
+
+                <tr>
+                    <td>Điểm lí</td>
+                    <td><input type="text" name="li"></td>
+                </tr>
+                <tr>
+                    <td>Trung bình</td>
+                    <td><input type="text" name="tb"></td>
+                </tr>
+
+                <tr>
+                    <td>Xếp loại</td>
+                    <td><input type="text" name="xl"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="button" value="Trung bình" onclick="javascript:trungbinh()">
+                        <input type="button" value="Xếp loại" onclick="javascript:xeploai()">
+                        <input type="button" value="Hủy" onclick="javascript:huy()">
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+
+    </div>
+
+    <div class="bai2">
+        <form action="" name="frm2">
+            <table>
+                <tr>
+                    <td>Tháng</td>
+                    <td><input type="text" name="month"></td>
+                </tr>
+                <tr>
+                    <td>Số ngày tháng</td>
+                    <td><input type="text" name="songay"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="Go" onclick="javascript:songaythang()">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <h1>Bảng cửu chương</h1>
+    <input type="number" id="soBangCuuchuong">
+    <button onclick="xuatBangCuuchuong()">Xuất</button>
+    <br>
+    <div id="ketQua"></div>
+
+    <script>
+        function xuatBangCuuchuong() {
+            var soBangCuuchuong = parseInt(document.getElementById("soBangCuuchuong").value);
+            var ketQua = "";
+            
+            if (!isNaN(soBangCuuchuong)) {
+                for (var i = 1; i <= 10; i++) {
+                    ketQua += soBangCuuchuong + " x " + i + " = " + (soBangCuuchuong * i) + "<br>";
+                }
+                document.getElementById("ketQua").innerHTML = ketQua;
+            } else {
+                document.getElementById("ketQua").innerHTML = "Vui lòng nhập một số nguyên.";
+            }
+        }
+    </script>
+      <h2>Xác định số ngày trong tháng</h2>
+
+      <label for="thangInput">Nhập tháng (1-12):</label>
+      <input type="number" id="thangInput" min="1" max="12">
+      <button onclick="xuatSoNgay()">Kiểm tra</button>
+  
+      <p id="ketQua"></p>
+  
+      <script>
+          function xuatSoNgay() {
+              var thangInput = document.getElementById("thangInput").value;
+              var ketQuaElement1 = document.getElementById("ketQua");
+              var thang = parseInt(thangInput);
+
+              var ketQua1;
+              switch (thang) {
+                  case 1:
+                  case 3:
+                  case 5:
+                  case 7:
+                  case 8:
+                  case 10:
+                  case 12:
+                      ketQua1 = "Tháng " + thang + " có 31 ngày";
+                      break;
+                  case 4:
+                  case 6:
+                  case 9:
+                  case 11:
+                      ketQua1 = "Tháng " + thang + " có 30 ngày";
+                      break;
+                  case 2:
+                      ketQua1 = "Tháng " + thang + " có 28 hoặc 29 ngày";
+                      break;
+                  default:
+                      ketQua1 = "Tháng không hợp lệ";
+              }
+  
+              ketQuaElement1.textContent = ketQua1;
+          }
+      </script>
+    
+
+</body>
+
+</html>

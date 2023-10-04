@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Xác định số ngày trong tháng</title>
+</head>
+<body>
+    <h2>Xác định số ngày trong tháng</h2>
+
+    <label for="thangInput">Nhập tháng (1-12):</label>
+    <input type="number" id="thangInput" min="1" max="12">
+    <button onclick="xuatSoNgay()">Kiểm tra</button>
+
+    <p id="ketQua"></p>
+
+    <script>
+        function xuatSoNgay() {
+            var thangInput = document.getElementById("thangInput").value;
+            var ketQuaElement = document.getElementById("ketQua");
+
+            // Chuyển giá trị thángInput thành số nguyên
+            var thang = parseInt(thangInput);
+
+            // Sử dụng cấu trúc switch để xác định số ngày trong tháng và lưu vào biến ketQua
+            var ketQua;
+            switch (thang) {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    ketQua = "Tháng " + thang + " có 31 ngày";
+                    break;
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    ketQua = "Tháng " + thang + " có 30 ngày";
+                    break;
+                case 2:
+                    ketQua = "Tháng " + thang + " có 28 hoặc 29 ngày";
+                    break;
+                default:
+                    ketQua = "Tháng không hợp lệ";
+            }
+
+            // Xuất kết quả ra màn hình
+            ketQuaElement.textContent = ketQua;
+        }
+    </script>
+</body>
+</html>
